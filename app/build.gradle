@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+    defaultConfig {
+        applicationId "io.github.mpao.drawerlayouttemplate"
+        minSdkVersion 24
+        targetSdkVersion 26
+        versionCode 200
+        versionName "2.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions { disable 'GoogleAppIndexingWarning' }
+    dataBinding.enabled = true
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+ext.supportlibs = '26.1.0'
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$supportlibs"
+    implementation "com.android.support:design:$supportlibs"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+}
